@@ -9,7 +9,7 @@ from torch import nn, einsum
 from einops import rearrange, repeat
 
 from ... import share
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 
 # params
 painta_res = [16, 32]

@@ -1,11 +1,11 @@
 import torch
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 from pytorch_lightning import seed_everything
 from tqdm import tqdm
 
-from src.smplfusion import share, router, attentionpatch, transformerpatch
-from src.smplfusion.patches.attentionpatch import painta
-from src.utils import tokenize, scores
+from src.hd_painter.src.smplfusion import share, router, attentionpatch, transformerpatch
+from src.hd_painter.src.smplfusion.patches.attentionpatch import painta
+from src.hd_painter.src.utils import tokenize, scores
 
 verbose = False
 

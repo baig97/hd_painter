@@ -1,5 +1,5 @@
 import torch 
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 
 class InputMask:
     def to(self, device): return InputMask(self.image, device = device)

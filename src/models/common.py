@@ -10,8 +10,8 @@ import safetensors.torch
 from omegaconf import OmegaConf
 from tqdm import tqdm
 
-from src.smplfusion import DDIM, share, scheduler
-from src.utils.convert_diffusers_to_sd import (
+from src.hd_painter.src.smplfusion import DDIM, share, scheduler
+from src.hd_painter.src.utils.convert_diffusers_to_sd import (
     convert_vae_state_dict,
     convert_unet_state_dict,
     convert_text_enc_state_dict,
@@ -22,6 +22,7 @@ from src.utils.convert_diffusers_to_sd import (
 PROJECT_DIR = dirname(dirname(dirname(__file__)))
 CONFIG_FOLDER =  f'{PROJECT_DIR}/config'
 MODEL_FOLDER =  f'{PROJECT_DIR}/checkpoints'
+print("PROJECT DIR:", PROJECT_DIR)
 
 
 def download_file(url, save_path, chunk_size=1024):
@@ -53,7 +54,7 @@ def get_obj_from_str(string):
     try:
         return getattr(importlib.import_module(module, package=None), cls)
     except:
-        return getattr(importlib.import_module('src.' + module, package=None), cls)
+        return getattr(importlib.import_module('src.hd_painter.src.' + module, package=None), cls)
 
 
 def load_obj(path):
@@ -82,6 +83,10 @@ def load_sd_inpainting_model(
     dtype=torch.float16,
     device='cuda:0'
 ):
+    PROJECT_DIR = dirname(dirname(dirname(__file__)))
+    CONFIG_FOLDER =  f'{PROJECT_DIR}/config'
+    MODEL_FOLDER =  f'{PROJECT_DIR}/checkpoints'
+    print("PROJECT DIR:", PROJECT_DIR)
     if type(download_url) == str and type(model_path) == str:
         model_path = f'{MODEL_FOLDER}/{model_path}'
         download_file(download_url, model_path)

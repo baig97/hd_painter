@@ -11,11 +11,11 @@ import numpy as np
 from inspect import isfunction
 from PIL import Image
 
-from src import smplfusion
-from src.smplfusion import share, router, attentionpatch, transformerpatch
-from src.utils.iimage import IImage
-from src.utils import poisson_blend
-from src.models.sd2_sr import predict_eps_from_z_and_v, predict_start_from_z_and_v
+from src.hd_painter.src import smplfusion
+from src.hd_painter.src.smplfusion import share, router, attentionpatch, transformerpatch
+from src.hd_painter.src.utils.iimage import IImage
+from src.hd_painter.src.utils import poisson_blend
+from src.hd_painter.src.models.sd2_sr import predict_eps_from_z_and_v, predict_start_from_z_and_v
 
 
 def refine_mask(hr_image, hr_mask, lr_image, sam_predictor):

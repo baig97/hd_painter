@@ -1,5 +1,5 @@
 import importlib
-from src.utils import IImage
+from src.hd_painter.src.utils import IImage
 
 
 def instantiate_from_config(config):

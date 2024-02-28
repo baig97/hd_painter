@@ -1,5 +1,5 @@
 import torchvision.transforms.functional as TF
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 import torch 
 import sys
 from .utils import *

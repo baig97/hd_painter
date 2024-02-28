@@ -6,15 +6,30 @@ import numpy as np
 from PIL import Image
 from tqdm import tqdm
 
-from src import models
-from src.methods import rasg, sd, sr
-from src.utils import IImage, resize
+from src.hd_painter.src import models
+from src.hd_painter.src.methods import rasg, sd, sr
+from src.hd_painter.src.utils import IImage, resize
 
 logging.disable(logging.INFO)
 
 root_path = Path(__file__).resolve().parent.parent
 negative_prompt = "text, bad anatomy, bad proportions, blurry, cropped, deformed, disfigured, duplicate, error, extra limbs, gross proportions, jpeg artifacts, long neck, low quality, lowres, malformed, morbid, mutated, mutilated, out of frame, ugly, worst quality"
 positive_prompt = "Full HD, 4K, high quality, high resolution"
+
+default_args = {
+    'image_path': Path("path/to/your/image.jpg"),
+    'mask_path': Path("path/to/your/mask.jpg"),
+    'prompt': "your_text_prompt",
+    'output_dir': Path("path/to/your/output"),
+    'num_samples': 1,
+    'model_id': 'sd15_inp',
+    'method': 'painta+rasg',
+    'sr_method': 'inpainting_specialized',
+    'guidance_scale': 7.5,
+    'rasg_eta': 0.1,
+    'num_steps': 50,
+    'seed': 1,
+}
 
 
 def get_args():
@@ -111,8 +126,8 @@ def get_inpainting_sr_function(
     return run
 
 
-def main():
-    args = get_args()
+def main(args):
+    # args = get_args()
 
     args.output_dir.mkdir(exist_ok=True, parents=True)
     
@@ -153,4 +168,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    namespace = argparse.Namespace(**default_args)
+    main(namespace)

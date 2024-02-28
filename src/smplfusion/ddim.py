@@ -3,7 +3,7 @@ from tqdm.notebook import tqdm
 from . import scheduler
 from . import share
 
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 
 class DDIM:
     def __init__(self, config, vae, encoder, unet):

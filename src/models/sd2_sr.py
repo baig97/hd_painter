@@ -10,7 +10,7 @@ import torch.nn as nn
 from inspect import isfunction
 from omegaconf import OmegaConf
 
-from src.smplfusion import DDIM, share, scheduler
+from src.hd_painter.src.smplfusion import DDIM, share, scheduler
 from .common import *
 
 

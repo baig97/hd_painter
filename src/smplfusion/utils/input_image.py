@@ -1,5 +1,5 @@
 import torch 
-from src.utils.iimage import IImage
+from src.hd_painter.src.utils.iimage import IImage
 
 class InputImage:
     def to(self, device): return InputImage(self.image, device = device)
